@@ -8,14 +8,20 @@
     <style>
       .country {
         border: 3px solid tomato;
-        margin: 10px;
+        margin: 30px;
         padding: 10px;
         border-radius: 10px;
+      }
+      #country {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 10px;
       }
     </style>
   </head>
   <body>
     <h1>Load data from Country api</h1>
+    <div id="single_country"></div>
     <div id="country"></div>
     <script src="./countries.js"></script>
   </body>
