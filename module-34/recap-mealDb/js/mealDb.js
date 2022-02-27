@@ -1,29 +1,35 @@
 const searchFood = () => {
   const inputField = document.getElementById("input-field");
   const inputText = inputField.value;
-  // console.log(inputText);
   inputField.value = "";
-  const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${inputText}`;
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => displayMeals(data.meals));
+
+  if (inputText == "") {
+    const empty = document.getElementById("empty-string");
+    empty.innerText = "PLEASE WRITE SOMETHING.";
+    empty.style.color = "red";
+  } else {
+    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${inputText}`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => displayMeals(data.meals));
+  }
 };
 
 const displayMeals = (meals) => {
-  // console.log(meals);
+  const showDetails = document.getElementById("show-details");
 
   meals.forEach((meal) => {
-    // console.log(meal);
+    if (!meal) {
+      console.log("hello");
+    }
+
     const { strMeal, strMealThumb, strInstructions, idMeal } = meal;
-    const showDetails = document.getElementById("show-details");
-
     showDetails.textContent = "";
-
     const div = document.createElement("div");
     div.classList.add("col");
     div.innerHTML = `
         <div class="card">
-                 <img src="${strMealThumb}" class="card-img-top" alt="..." />
+                 <img src="${strMealThumb}" class="card-img-top" alt="image" />
              <div class="card-body">
                  <h5 class="card-title">${strMeal}</h5>
                  <p class="card-text">
@@ -38,7 +44,6 @@ const displayMeals = (meals) => {
 };
 
 const showDetails = (mealId) => {
-  // console.log(mealId);
   showDetails.textContent = "";
   const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`;
   fetch(url)
@@ -47,7 +52,6 @@ const showDetails = (mealId) => {
 };
 
 const displayMealDetails = (meal) => {
-  console.log(meal);
   const { strMealThumb, strMeal, strInstructions, strYoutube } = meal;
   const mealDetails = document.getElementById("meal-details");
 
@@ -55,7 +59,7 @@ const displayMealDetails = (meal) => {
   const div = document.createElement("div");
   div.classList.add("card");
   div.innerHTML = `
-          <img src="${strMealThumb}" class="card-img-top" alt="...">
+          <img src="${strMealThumb}" class="card-img-top" alt="image">
         <div class="card-body">
           <h5 class="card-title">${strMeal}</h5>
           <p class="card-text"> ${strInstructions.slice(0, 150)}</p>
