@@ -35,3 +35,23 @@ const productAddToCart = (product) => {
   const cartStringified = JSON.stringify(cart);
   localStorage.setItem("cart", cartStringified);
 };
+
+// const getCart = () => {
+//   const cart = localStorage.getItem("cart");
+//   let cartObj;
+//   if (cart) {
+//     cartObj = JSON.parse(cart);
+//   } else {
+//     cartObj = {};
+//   }
+//   return cartObj;
+// };
+
+// const productAddToCart = (product) => {
+//   const cart = getCart();
+//   cart[product] = 1;
+//   console.log(cart);
+//   const cartStringified = JSON.stringify(cart);
+
+//   localStorage.setItem("cart", cartStringified);
+// };
