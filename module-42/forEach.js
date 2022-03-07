@@ -6,9 +6,5 @@ const products = [
   { name: "oppo 12 pro", brand: "oppo", price: 1800, color: "purple" },
 ];
 
-const brand = products.map((product) => product.brand);
-const color = products.map((product) => product.color);
-console.log(brand);
-console.log(color);
-
-// map return an array.
+products.forEach((product) => console.log(product.name));
+products.forEach((product) => console.log(product.price));
