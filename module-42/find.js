@@ -7,15 +7,8 @@ const products = [
   { name: "samsung pro", brand: "oppo", price: 1800, color: "purple" },
 ];
 
-const budget = products.filter((product) => product.price < 2000);
-console.log(budget);
+const cheap = products.find((product) => product.price <= 2000);
+console.log(cheap);
 
-const sameBrandProduct = products.filter((product) =>
-  product.name.includes("samsung")
-);
-console.log(sameBrandProduct);
-
-const sameModel = products.filter((product) => product.name.includes(12));
-console.log(sameModel);
-
-// filter return an array.
+const needShirt = products.find((product) => product.name.includes("shirt"));
+console.log(needShirt);
