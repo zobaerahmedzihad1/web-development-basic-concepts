@@ -6,9 +6,10 @@ const products = [
   { name: "oppo 12 pro", brand: "oppo", price: 1800, color: "purple" },
 ];
 
-products.forEach((product) => console.log(product.name));
-products.forEach((product) => {
-  console.log(product.price);
-});
+// const budget = products.filter((product) => {
+//   product.price <= 2000;
+// });
+// console.log(budget);
 
-// forEach returns nothing.
+const budget = products.filter((product) => product.price < 2000);
+console.log(budget);
