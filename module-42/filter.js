@@ -4,12 +4,16 @@ const products = [
   { name: "watch", brand: "rolex", price: 2000, color: "red" },
   { name: "t-shirt", brand: "easy", price: 1200, color: "black" },
   { name: "oppo 12 pro", brand: "oppo", price: 1800, color: "purple" },
+  { name: "samsung pro", brand: "oppo", price: 1800, color: "purple" },
 ];
-
-// const budget = products.filter((product) => {
-//   product.price <= 2000;
-// });
-// console.log(budget);
 
 const budget = products.filter((product) => product.price < 2000);
 console.log(budget);
+
+const sameBrandProduct = products.filter((product) =>
+  product.name.includes("samsung")
+);
+console.log(sameBrandProduct);
+
+const sameModel = products.filter((product) => product.name.includes(12));
+console.log(sameModel);
