@@ -25,3 +25,9 @@ products.push(leather);
 // without t-shirt create an array
 const withoutShirt = products.filter((product) => product.name !== "t-shirt");
 console.log(withoutShirt);
+
+// featch
+
+fetch("url")
+  .then((response) => response.json())
+  .then((data) => console.log(data));
