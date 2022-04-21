@@ -25,10 +25,23 @@ async function run() {
     await client.connect();
     const userCollection = client.db("foodExpress").collection("user");
 
-    app.post("/user", (req, res) => {
+    // read data from mongodb database.
+    app.get("/users", async (req, res) => {
+      const query = {};
+      const cursor = userCollection.find(query);
+      const users = await cursor.toArray();
+      res.send(users);
+    });
+
+    // receive data from client side.
+    app.post("/user", async (req, res) => {
       const user = req.body;
       console.log(user);
-      res.send({ status: "success." });
+      // send data to mongodb.
+      const result = await userCollection.insertOne(user);
+      console.log(`Data was inserted to mongodb ${result.insertedId}`);
+
+      res.send(result);
     });
   } finally {
     // await client.close()
