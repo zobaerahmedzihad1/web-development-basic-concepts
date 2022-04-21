@@ -1,6 +1,7 @@
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const express = require("express");
 const cors = require("cors");
+const res = require("express/lib/response");
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -23,14 +24,14 @@ async function run() {
   try {
     await client.connect();
     const userCollection = client.db("foodExpress").collection("user");
-    const user1 = {
-      name: "zihad",
-      email: "zobaerahmedzihad02@gmail.com",
-    };
-    const result = await userCollection.insertOne(user1);
-    console.log(`A document was inserted ${result.insertedId}`)
+
+    app.post("/user", (req, res) => {
+      const user = req.body;
+      console.log(user);
+      res.send({ status: "success." });
+    });
   } finally {
-    // await client.close();
+    // await client.close()
   }
 }
 run().catch(console.dir);
