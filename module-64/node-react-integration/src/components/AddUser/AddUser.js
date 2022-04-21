@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const AddUser = () => {
+  const [users, setUsers] = useState([]);
+
   const handleUserInformation = (e) => {
     e.preventDefault();
 
@@ -9,7 +11,7 @@ const AddUser = () => {
 
     const user = { name, email };
 
-// send data to server (backend)
+    // send data to server (backend)
     fetch("http://localhost:5000/user", {
       method: "POST",
       headers: {
@@ -18,7 +20,9 @@ const AddUser = () => {
       body: JSON.stringify(user),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => console(data));
+    alert("user created.");
+    e.target.reset();
   };
 
   return (
@@ -31,6 +35,9 @@ const AddUser = () => {
         <br />
         <input type="submit" value="Add user" />
       </form>
+      <h3>User Name : {users.name} </h3>
+      <h2>User Id : {users.insertedId} </h2>
+      
     </div>
   );
 };
