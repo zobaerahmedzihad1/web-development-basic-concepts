@@ -1,11 +1,17 @@
-import './App.css';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import AddUser from "./components/AddUser/AddUser";
+import Home from "./components/Home/Home";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <h3>Node react project.</h3>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/user/add" element={<AddUser />} />
+      </Routes>
+    </>
   );
-}
+};
 
 export default App;
